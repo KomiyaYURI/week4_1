@@ -1,6 +1,6 @@
 package com.tw;
 
-import sun.util.locale.provider.FallbackLocaleProviderAdapter;
+//import sun.util.locale.provider.FallbackLocaleProviderAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -92,7 +92,7 @@ public class Library {
         switch (status)
         {
             case 1: while (true) {
-                        System.out.println("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：");
+                        // System.out.println("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：");
                         try {
                             str = stdin.readLine();
                         } catch (IOException e) {
@@ -105,7 +105,7 @@ public class Library {
                     break;
 
             case 2: while (true) {
-                        System.out.println("请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：");
+                        // System.out.println("请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：");
                         try {
                             str = stdin.readLine();
                         } catch (IOException e) {
@@ -184,10 +184,10 @@ public class Library {
     void printMenu()
     {
         do {
-            System.out.println("1. 添加学生");
-            System.out.println("2. 生成成绩单");
-            System.out.println("3. 退出");
-            System.out.println("请输入你的选择（1～3）：");
+            // System.out.println("1. 添加学生");
+            // System.out.println("2. 生成成绩单");
+            // System.out.println("3. 退出");
+            // System.out.println("请输入你的选择（1～3）：");
 
             status = sb.nextInt();
         } while (!(1 <= status && status <= 3));
@@ -225,7 +225,7 @@ public class Library {
         status = 0;
     }
     //
-    void printStudentInfo(String inputStr)
+    int printStudentInfo(String inputStr)
     {
         int totalNum=0;
         double totalScore=0;
@@ -235,8 +235,8 @@ public class Library {
         List<Double> gradeList = new ArrayList<Double>();
 
         ss_buf = str.split(", ");
-        System.out.println("姓名|数学|语文|英语|编程|平均分|总分");
-        System.out.println("========================");
+        //  System.out.println("姓名|数学|语文|英语|编程|平均分|总分");
+        //  System.out.println("========================");
 
         for (String s : ss_buf)
         {
@@ -247,15 +247,15 @@ public class Library {
 
                 double tmpTotalScore=0;
 
-                System.out.print(student.name + "|");
-                System.out.print(student.math + "|");
-                System.out.print(student.chinese + "|");
-                System.out.print(student.english + "|");
-                System.out.print(student.program + "|");
+                // System.out.print(student.name + "|");
+                // System.out.print(student.math + "|");
+                // System.out.print(student.chinese + "|");
+                // System.out.print(student.english + "|");
+                // System.out.print(student.program + "|");
 
                 tmpTotalScore = student.getTotalScore();
-                System.out.print(1.0 * tmpTotalScore / 4 + "|");
-                System.out.print(tmpTotalScore + "\n");
+                // System.out.print(1.0 * tmpTotalScore / 4 + "|");
+                // System.out.print(tmpTotalScore + "\n");
 
                 totalScore += tmpTotalScore;
                 gradeList.add(tmpTotalScore);
@@ -264,18 +264,19 @@ public class Library {
 
         Collections.sort(gradeList);
 
-        System.out.println("========================");
-        System.out.println("全班总分平均数：" + totalScore / totalNum);
+        // System.out.println("========================");
+        // System.out.println("全班总分平均数：" + totalScore / totalNum);
 
         if (gradeList.size() % 2 == 1) {
-            System.out.println("全班总分中位数：" + gradeList.get(gradeList.size() / 2));
+            // System.out.println("全班总分中位数：" + gradeList.get(gradeList.size() / 2));
+            ;
         } else {
-            System.out.println("全班总分中位数：" + (double)(gradeList.get(gradeList.size() / 2) +
-                    gradeList.get(gradeList.size() / 2 + 1)) / 2);
+            // System.out.println("全班总分中位数：" + (double)(gradeList.get(gradeList.size() / 2) +
+            //         gradeList.get(gradeList.size() / 2 - 1)) / 2);
         }
 
-
         status = 0;
+        return totalNum;
     }
 
     void exit()

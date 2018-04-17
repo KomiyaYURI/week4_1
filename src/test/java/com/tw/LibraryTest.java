@@ -62,8 +62,8 @@ public class LibraryTest {
     public void testStudent() throws Exception {
         Library library = new Library();
         library.addStudentInfo("name, 2014150111, 数学: 90.1, 语文: 90.1, 英语: 90.1, 编程: 90.1");
-        library.printStudentInfo("2014150111");
-
+        int foundNum = library.printStudentInfo("2014150111, 2014150123");
+        assertEquals(1, foundNum);
     }
 }
 
